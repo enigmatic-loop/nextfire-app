@@ -1,6 +1,8 @@
+'use client'
 import { Toaster } from 'react-hot-toast';
 import './globals.css'
 import Navbar from "@/components/Navbar";
+import { UserContext } from '@/lib/context';
 
 
 function MyApp({
@@ -11,9 +13,11 @@ function MyApp({
   return (
     <html>
       <body>
-        <Navbar/>
-        {children}
-        <Toaster />
+        <UserContext.Provider value={{ user: {}, username: 'nina'}}>
+          <Navbar/>
+          {children}
+          <Toaster />
+        </UserContext.Provider>
         </body>
     </html>
   )
