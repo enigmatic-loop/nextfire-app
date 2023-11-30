@@ -1,8 +1,8 @@
 import { createContext } from "react";
 
 type UserContext = {
-  user: object | null,
-  username: string | null
+  user?: any,
+  username?: string | null
 }
 
 
