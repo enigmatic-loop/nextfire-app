@@ -37,6 +37,7 @@ function SignInButton() {
     </button>
   )
 }
+
 function SignOutButton() {
   const signOut = async () => {
     await auth.signOut();
@@ -48,9 +49,9 @@ function SignOutButton() {
 
 
 function UsernameForm() {
-  const [formValue, setFormValue] = useState('');
-  const [isValid, setIsValid] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [formValue, setFormValue] = useState<string>('');
+  const [isValid, setIsValid] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
 
   const { user, username } = useContext(UserContext);
 
@@ -60,8 +61,8 @@ function UsernameForm() {
   }, [formValue])
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    const val = e.target.value.toLowerCase();
-    const re = /^(?=[a-zA-Z0-9._]{3,15}$)(?!.*[_.]{2})[^_.].*[^_.]$/;
+    const val: string = e.target.value.toLowerCase();
+    const re: RegExp = /^(?=[a-zA-Z0-9._]{3,15}$)(?!.*[_.]{2})[^_.].*[^_.]$/;
 
     // Only set form val if length < 3 OR passes regex
     if (val.length < 3) {
